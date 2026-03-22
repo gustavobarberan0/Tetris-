@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TETRIS — NES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- SCANLINES OVERLAY -->
+  <div class="scanlines"></div>
+  <div class="crt-vignette"></div>
+
+  <!-- ===================== SCREEN: LOGIN ===================== -->
+  <div id="screen-login" class="screen active">
+    <div class="nes-window login-window">
+      <div class="nes-title-bar">
+        <span class="blink">▶</span> TETRIS NES
+      </div>
+      <div class="nes-logo">
+        <div class="logo-T">T</div>
+        <div class="logo-E">E</div>
+        <div class="logo-T2">T</div>
+        <div class="logo-R">R</div>
+        <div class="logo-I">I</div>
+        <div class="logo-S">S</div>
+      </div>
+      <div class="login-form">
+        <p class="nes-label">INGRESA TU NOMBRE:</p>
+        <div class="nes-input-wrap">
+          <span class="input-cursor">▶</span>
+          <input type="text" id="player-name-input" class="nes-input" maxlength="12" placeholder="JUGADOR1" autocomplete="off" spellcheck="false">
+        </div>
+        <button id="btn-start-login" class="nes-btn btn-red">
+          <span>JUGAR</span>
+        </button>
+        <button id="btn-view-ranking" class="nes-btn btn-gray">
+          <span>RANKING</span>
+        </button>
+      </div>
+      <p id="login-error" class="nes-error hidden"></p>
+      <div class="insert-coin blink">INSERT COIN</div>
+    </div>
+  </div>
+
+  <!-- ===================== SCREEN: GAME ===================== -->
+  <div id="screen-game" class="screen">
+    <div class="game-container">
+
+      <!-- LEFT PANEL -->
+      <div class="side-panel left-panel">
+        <div class="nes-box">
+          <div class="nes-box-title">JUGADOR</div>
+          <div id="display-player-name" class="player-name-display">---</div>
+        </div>
+        <div class="nes-box">
+          <div class="nes-box-title">PUNTAJE</div>
+          <div id="score-display" class="score-value">000000</div>
+        </div>
+        <div class="nes-box">
+          <div class="nes-box-title">RECORD</div>
+          <div id="best-score-display" class="score-value hi-score">000000</div>
+        </div>
+        <div class="nes-box">
+          <div class="nes-box-title">LINEAS</div>
+          <div id="lines-display" class="score-value">00</div>
+        </div>
+        <div class="nes-box">
+          <div class="nes-box-title">NIVEL</div>
+          <div id="level-display" class="score-value">01</div>
+        </div>
+      </div>
+
+      <!-- BOARD -->
+      <div class="board-wrap">
+        <div class="nes-screen-border">
+          <div id="game-grid" class="game-grid"></div>
+          <!-- OVERLAY MESSAGES -->
+          <div id="overlay-message" class="overlay-message hidden">
+            <div class="overlay-text" id="overlay-text"></div>
+            <button id="btn-overlay-action" class="nes-btn btn-red overlay-btn">JUGAR DE NUEVO</button>
+            <button id="btn-overlay-ranking" class="nes-btn btn-blue overlay-btn">VER RANKING</button>
+            <button id="btn-overlay-home" class="nes-btn btn-gray overlay-btn">INICIO</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="side-panel right-panel">
+        <div class="nes-box">
+          <div class="nes-box-title">SIGUIENTE</div>
+          <div id="next-grid" class="next-grid"></div>
+        </div>
+        <div class="nes-box controls-box">
+          <div class="nes-box-title">CONTROLES</div>
+          <div class="ctrl-row"><span class="key-icon">←→</span><span>MOVER</span></div>
+          <div class="ctrl-row"><span class="key-icon">↑</span><span>ROTAR</span></div>
+          <div class="ctrl-row"><span class="key-icon">↓</span><span>BAJAR</span></div>
+          <div class="ctrl-row"><span class="key-icon">SPC</span><span>CAÍDA</span></div>
+          <div class="ctrl-row"><span class="key-icon">P</span><span>PAUSA</span></div>
+        </div>
+        <button id="btn-pause" class="nes-btn btn-yellow">⏸ PAUSA</button>
+        <button id="btn-quit" class="nes-btn btn-gray">⏹ SALIR</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== SCREEN: RANKING ===================== -->
+  <div id="screen-ranking" class="screen">
+    <div class="nes-window ranking-window">
+      <div class="nes-title-bar">🏆 RANKING GLOBAL</div>
+      <div id="ranking-list" class="ranking-list">
+        <p class="loading-text blink">CARGANDO...</p>
+      </div>
+      <button id="btn-ranking-back" class="nes-btn btn-gray">← VOLVER</button>
+    </div>
+  </div>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
